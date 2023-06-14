@@ -7,13 +7,12 @@
 				ekstrakcji.
 			</p>
 
-			<form class="w-25" id="extraction-form">
+			<form method="POST" action="{{url_for('extraction')}}" class="w-25" id="extraction-form">
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="basic-addon1">id</span>
 					</div>
-					<input id="id-input" type="text" class="form-control" placeholder="kod produktu" aria-label="Username"
-						aria-describedby="basic-addon1" />
+					<input id="id-input" name="product_id" type="text" class="form-control" placeholder="kod produktu" />
 				</div>
 				<button type="submit" class="btn btn-primary">Ekstraktuj</button>
 			</form>
@@ -21,29 +20,29 @@
 {% block script %}
 	<script>
 		
-		const extractionForm = document.getElementById("extraction-form")
-		extractionForm.addEventListener("submit", function(e){
-			e.preventDefault()
-			const idInput = document.getElementById("id-input")
+		// const extractionForm = document.getElementById("extraction-form")
+		// extractionForm.addEventListener("submit", function(e){
+		// 	e.preventDefault()
+		// 	const idInput = document.getElementById("id-input")
 			
-			//kod do łączenia z kodem python do ekstrakcji
+		// 	//kod do łączenia z kodem python do ekstrakcji
 
-			fetch("https://www.ceneo.pl/"+idInput.value)
-				.then(response => {
-					if (response.ok) {
-					console.log('Strona zwraca status OK');
-					} else {
-					console.log('Strona zwraca inny status niż OK');
-					}
-				})
-				.catch(error => {
-					console.log('Wystąpił błąd podczas żądania:', error);
-			});
+		// 	fetch("https://www.ceneo.pl/"+idInput.value)
+		// 		.then(response => {
+		// 			if (response.ok) {
+		// 			console.log('Strona zwraca status OK');
+		// 			} else {
+		// 			console.log('Strona zwraca inny status niż OK');
+		// 			}
+		// 		})
+		// 		.catch(error => {
+		// 			console.log('Wystąpił błąd podczas żądania:', error);
+		// 	});
 
-			// window.location.href = "product.html/"+idInput.value
-			window.location.href = "product.html"
-			// console.log("https://www.ceneo.pl/"+idInput.value)
-		})
+		// 	// window.location.href = "product.html/"+idInput.value
+		// 	window.location.href = "product.html"
+		// 	// console.log("https://www.ceneo.pl/"+idInput.value)
+		// })
 
 	</script>
 
