@@ -2,27 +2,36 @@
 {% block title %}Produkty{% endblock %}
 {% block content %}
 
+
+
+	
+	
+
+
 			<ul class="list-group list-group-flush">
+				
+				{% for item in result %}
 				<li class="list-group-item bg-dark text-light h4 border-bottom">
-					<a href="product.html/123123123" class="link-primary link-underline-opacity-0">Pralka 1</a>
+					<a href="product/{{item[0]}}" class="link-primary link-underline-opacity-0">{{ item[0] }}</a>
 					<ul class="list-group-flush">
 						<li class="pt-2 bg-dark text-light h6">
-							Liczba opinii: 24
+							Liczba opinii: {{ item[1] }}
 						</li>
 						<li class="pt-2 bg-dark text-light h6">
-							Liczba wad: 24
+							Liczba wad: {{ item[2] }}
 						</li>
 						<li class="pt-2 bg-dark text-light h6">
-							Liczba zalet: 24
+							Liczba zalet: {{ item[3] }}
 						</li>
 						<li class="pt-2 bg-dark text-light h6">
-							Średnia ocen: 4,5
+							Średnia ocen: {{ item[4] }}
 						</li>
 						<li class="bg-dark text-light h6">
-							<a href="../../opinions/96177943.json" download><button type="button" class="btn btn-primary mx-1">Pobierz json</button></a>
+							<a href="./static/opinions/{{item[0]}}.json" download><button type="button" class="btn btn-primary mx-1">Pobierz json</button></a>
 						</li>
 					</ul>
 				</li>
+				{% endfor %}
 
 			</ul>
 

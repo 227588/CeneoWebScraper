@@ -16,33 +16,24 @@
 				</div>
 				<button type="submit" class="btn btn-primary">Ekstraktuj</button>
 			</form>
+
+
+			{% if error %}
+				<div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+					<strong>{{error}}</strong> Kod błędu: {{error_no}}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			  	</div>
+			{% else %}
+				
+			{% endif %}
+
+			
+
+
 {% endblock %}
 {% block script %}
 	<script>
 		
-		// const extractionForm = document.getElementById("extraction-form")
-		// extractionForm.addEventListener("submit", function(e){
-		// 	e.preventDefault()
-		// 	const idInput = document.getElementById("id-input")
-			
-		// 	//kod do łączenia z kodem python do ekstrakcji
-
-		// 	fetch("https://www.ceneo.pl/"+idInput.value)
-		// 		.then(response => {
-		// 			if (response.ok) {
-		// 			console.log('Strona zwraca status OK');
-		// 			} else {
-		// 			console.log('Strona zwraca inny status niż OK');
-		// 			}
-		// 		})
-		// 		.catch(error => {
-		// 			console.log('Wystąpił błąd podczas żądania:', error);
-		// 	});
-
-		// 	// window.location.href = "product.html/"+idInput.value
-		// 	window.location.href = "product.html"
-		// 	// console.log("https://www.ceneo.pl/"+idInput.value)
-		// })
 
 	</script>
 
