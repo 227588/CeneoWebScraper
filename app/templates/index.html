@@ -2,53 +2,69 @@
 {% block title %}Opis projektu{% endblock %}
 {% block content %}
 
-
-
-			<ul class="list-group list-group-flush">
-				<li class="list-group-item bg-dark text-light h3">
-					Cel aplikacji
-					<ul class="list-group-flush">
-						<li class="list-group-item bg-dark text-light h5">
-							Aplikacja ma na celu pobieranie opini i innych danych o wybranym
-							produkcie oraz wyświetlanie i analizowanie danych zebranych za
-							pomocą różnych bibliotek Python'a.
-						</li>
-					</ul>
-				</li>
-				<li class="list-group-item bg-dark text-light h3">
-					Opis działania aplikacji
-					<ul class="list-group-flush">
-						<li class="list-group-item bg-dark text-light h5">
-							Aplikacja została podzielona na kilka podstron:
-							<ul>
-								<li>Strona główna</li>
-								<li>Lista produktów</li>
-								<li>Ekstrakcja opinii</li>
-								<li>O autorze</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li class="list-group-item bg-dark text-light h3">
-					Zastosowane biblioteki
-					<ul class="list-group-flush">
-						<li class="list-group-item bg-dark text-light h5">
-							<ul>
-								<li>Flask</li>
-								<li>Requests</li>
-								<li>...</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li class="list-group-item bg-dark text-light h3">
-					Zastosowane podejście
-					<ul class="list-group-flush">
-						<li class="list-group-item bg-dark text-light h5">
-							W tym projekcie zostało zastosowane podejście, aby zrobic go i zdobyć jak najlepszą ocenę z zajęć.
-						</li>
-					</ul>
-				</li>
-			</ul>
+<ul class="list-group list-group-flush">
+	<li class="list-group-item bg-dark text-light h3">
+		Cel aplikacji
+		<ul class="list-group-flush">
+			<li class="list-group-item bg-dark text-light h5">
+				Tematem projektu realizowanego w trakcie zajęć jest aplikacja webowa służąca do
+				pobierania z serwisu Ceneo.pl opinii o produktach na podstawie ich indywidualnych kodów
+				oraz do wyświetlenia pobranych opinii i podstawowych statystyk o nich.
+				Aplikacja będzie realizowana etapami zaczynając od pojedynczego pliku aż do
+				zaawansowanej struktury plików i katalogów opracowanej na podstawie wybranego
+				framework’a i dobrych praktyk programistycznych. Aplikacja początkowo będzie typowo
+				strukturalna, ale z czasem kod zostanie zrefaktoryzowany do postaci proceduralnej, a
+				finalnie zastosowane zostanie podejście zorientowane obiektowo. W pierwszych etapach
+				pracy wszystkie parametry będą zapisane w kodzie w postaci stałych dosłownych, a w
+				dalszej kolejności zastosowany zostanie prosty tekstowy interfejs pozwalający na
+				wprowadzanie wartości przez użytkownika, który później będzie podstawą do opracowania
+				webowego interfejsu aplikacji.
+			</li>
+		</ul>
+	</li>
+	<li class="list-group-item bg-dark text-light h3">
+		Opis działania aplikacji
+		<ul class="list-group-flush">
+			<li class="list-group-item bg-dark text-light h5">
+				Celem działania aplikacji jest pobieranie opinii o produktach z serwisu Ceneo.pl. Dla
+				produktu, którego kod zostanie podany jako parametr należy pobrać jego nazwę oraz
+				wszystkie dostępne opinie o nim
+				Aplikacja została podzielona na kilka podstron:
+				<ul>
+					<li>Strona główna</li>
+					<li>Lista produktów</li>
+					<li>Ekstrakcja opinii</li>
+					<li>O autorze</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li class="list-group-item bg-dark text-light h3">
+		Zastosowane biblioteki
+		<ul class="list-group-flush">
+			<li class="list-group-item bg-dark text-light h5">
+				<ul>
+					<li>Flask</li>
+					<li>Requests</li>
+					<li>Beautifulsoup4</li>
+					<li>Jinja2</li>
+					<li>Matplotlib</li>
+					<li>Mysql-connector-python</li>
+					<li>Numpy</li>
+					<li>Pandas</li>
+					<li>...</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li class="list-group-item bg-dark text-light h3">
+		Zastosowane podejście
+		<ul class="list-group-flush">
+			<li class="list-group-item bg-dark text-light h5">
+				W tym projekcie zostało zastosowane podejście, aby zrobic go i zdobyć jak najlepszą ocenę z zajęć.
+			</li>
+		</ul>
+	</li>
+</ul>
 
 {% endblock %}

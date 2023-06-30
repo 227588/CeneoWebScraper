@@ -8,6 +8,8 @@ import requests
 from app.utils import get_element, selectors
 from app.database import Database
 import simplejson
+import csv
+
 
 class Scraper():
     def extraction(self, product_code):
@@ -26,22 +28,24 @@ class Scraper():
                 self.all_opinions.append(single_opinion)
             try:
                 url = "https://www.ceneo.pl"+get_element(page, "a.pagination__next", "href")
+                print(url)
             except TypeError:
                 url = None
-
         try:
             os.mkdir("./app/static/opinions")
         except FileExistsError:
             pass
-        with open(f"./app/static/opinions/{self.product_code}.json", "w", encoding="UTF-8") as jf:
+        with open(f"./app/static/opinions/{product_code}.json", "w", encoding="UTF-8") as jf:
             json.dump(self.all_opinions, jf, indent=4,ensure_ascii=False)
+        with open(f"./app/static/opinions/{product_code}.csv", 'w', encoding = "UTF-8") as cf:
+            dcf = pd.DataFrame(self.all_opinions)
+            dcf.to_csv(f"./app/static/opinions/{product_code}.csv")
+        with open(f"./app/static/opinions/{product_code}.xlsx", 'w', encoding = "UTF-8") as xf:
+            df = pd.DataFrame(self.all_opinions).to_excel(f"./app/static/opinions/{product_code}.xlsx")
 
-
-        # od tego momentu wyrzuca błą main loop
-
+        # od tego momentu wyrzuca błąd main loop
 
         opinions = pd.read_json(json.dumps(self.all_opinions,ensure_ascii=False))
-        # # opinions.score = opinions.score.map(lambda x: float(x[:-2].replace(",",".")))
         opinions.score = opinions.score.map(lambda x: float(x.split("/")[0].replace(",",".")))
 
         stats = {
@@ -59,7 +63,6 @@ class Scraper():
         plt.ylabel("Liczba opinii")
         for index, value in enumerate(score):
             plt.text(index, value+0.5, str(value), ha="center")
-
         try:
             os.mkdir("./app/static/plots")
         except FileExistsError:
@@ -91,38 +94,6 @@ class Scraper():
         return 0
 
 
-
-
-
-
-
     def add_to_database(self):
         self.db = Database()
         self.db.add_record(self.product_code, self.all_opinions, self.stats)
-
-    
-
-
-    
-
-    
-    # #udział poszczególnych rekomendacji w ogólnej liczbie opinii
-    # recommendation = opinions["recommendation"].value_counts(dropna=False).sort_index()
-    # recommendation.plot.pie(
-    #     label="", 
-    #     autopct="%1.1f%%",
-    #     labels = ["Nie polecam", "Polecam", "Nie mam zdania"],
-    #     colors = ["crimson", "forestgreen", "gray"]
-    #     )
-    # plt.legend(bbox_to_anchor=(1.0,1.0))
-    # plt.savefig(f"./app/static/plots/{product_code}_recommendation.png")
-    # plt.close()
-    # stats["score"] = score.to_dict()
-    # stats["recommendation"] = recommendation.to_dict()
-    # try:
-    #     os.mkdir("./app/static/stats")
-    # except FileExistsError:
-    #     pass
-    # with open(f"./app/static/stats/{product_code}.json", "w", encoding="UTF-8") as jf:
-    #     json.dump(stats, jf, indent=4,ensure_ascii=False)
-    # return redirect(url_for("product", product_code=product_code))

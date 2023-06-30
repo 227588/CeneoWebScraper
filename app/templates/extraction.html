@@ -1,41 +1,36 @@
 {% extends 'base.html' %}
 {% block title %}Ekstrakcja{% endblock %}
 
+
 {% block content %}
-			<p class="text-light h4">
-				W polu poniżej wpisz kod produktu, na którym chcesz dokonać
-				ekstrakcji.
-			</p>
-
-			<form method="POST" action="{{url_for('extraction')}}" class="w-25" id="extraction-form">
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="basic-addon1">id</span>
-					</div>
-					<input id="id-input" name="product_id" type="text" class="form-control" placeholder="kod produktu" />
-				</div>
-				<button type="submit" class="btn btn-primary">Ekstraktuj</button>
-			</form>
+<p class="text-light h4">
+	W polu poniżej wpisz kod produktu, na którym chcesz dokonać
+	ekstrakcji.
+</p>
 
 
-			{% if error %}
-				<div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
-					<strong>{{error}}</strong> Kod błędu: {{error_no}}
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			  	</div>
-			{% else %}
-				
-			{% endif %}
+<form method="POST" action="{{url_for('extraction')}}" class="w-25" id="extraction-form">
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+			<span class="input-group-text" id="basic-addon1">id</span>
+		</div>
+		<input id="id-input" name="product_id" type="text" class="form-control" placeholder="kod produktu" />
+	</div>
+	<button type="submit" class="btn btn-primary">Ekstraktuj</button>
+</form>
 
-			
+
+	{% if error %}
+	<div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+		<strong>{{error}}</strong> Kod błędu: {{error_no}}
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+	{% else %}
+	{% endif %}
 
 
 {% endblock %}
 {% block script %}
-	<script>
-		
-
-	</script>
-
-
+<script>
+</script>
 {% endblock %}

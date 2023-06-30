@@ -2,66 +2,32 @@
 {% block title %}Produkty{% endblock %}
 {% block content %}
 
+<ul class="list-group list-group-flush">
 
+	{% for item in result %}
+	<li class="list-group-item bg-dark text-light h4 border-bottom">
+		<a href="product/{{item[0]}}" class="link-primary link-underline-opacity-0">{{ item[0] }}</a>
+		<ul class="list-group-flush">
+			<li class="pt-2 bg-dark text-light h6">
+				Liczba opinii: {{ item[1] }}
+			</li>
+			<li class="pt-2 bg-dark text-light h6">
+				Liczba wad: {{ item[2] }}
+			</li>
+			<li class="pt-2 bg-dark text-light h6">
+				Liczba zalet: {{ item[3] }}
+			</li>
+			<li class="pt-2 bg-dark text-light h6">
+				Średnia ocen: {{ item[4] }}
+			</li>
+			<li class="bg-dark text-light h6">
+				<a href="./static/opinions/{{item[0]}}.json" download><button type="button"
+						class="btn btn-primary mx-1">Pobierz json</button></a>
+			</li>
+		</ul>
+	</li>
+	{% endfor %}
 
-	
-	
-
-
-			<ul class="list-group list-group-flush">
-				
-				{% for item in result %}
-				<li class="list-group-item bg-dark text-light h4 border-bottom">
-					<a href="product/{{item[0]}}" class="link-primary link-underline-opacity-0">{{ item[0] }}</a>
-					<ul class="list-group-flush">
-						<li class="pt-2 bg-dark text-light h6">
-							Liczba opinii: {{ item[1] }}
-						</li>
-						<li class="pt-2 bg-dark text-light h6">
-							Liczba wad: {{ item[2] }}
-						</li>
-						<li class="pt-2 bg-dark text-light h6">
-							Liczba zalet: {{ item[3] }}
-						</li>
-						<li class="pt-2 bg-dark text-light h6">
-							Średnia ocen: {{ item[4] }}
-						</li>
-						<li class="bg-dark text-light h6">
-							<a href="./static/opinions/{{item[0]}}.json" download><button type="button" class="btn btn-primary mx-1">Pobierz json</button></a>
-						</li>
-					</ul>
-				</li>
-				{% endfor %}
-
-			</ul>
-
-			<!-- <table class="table table-hover table-dark table-striped">
-				<thead>
-				  <tr>
-					<th scope="col">Nazwa produktu</th>
-					<th scope="col">Liczba opinii</th>
-					<th scope="col">Liczba wad</th>
-					<th scope="col">Liczba zalet</th>
-					<th scope="col">Średnia ocen</th>
-					<th scope="col">Pobierz csv/xlsx/json</th>
-				  </tr>
-				</thead>
-				<tbody>
-				  <tr>
-					<th scope="row">
-						<a href="product.html/123123123" class="link-primary link-underline-opacity-0">Pralka 1</a>
-					</th>
-					<td>203</td>
-					<td>33</td>
-					<td>44</td>
-					<td>4,6</td>
-					<td>
-						<button type="button" class="btn btn-primary mx-1">csv</button>
-						<button type="button" class="btn btn-primary mx-1">xlsx</button>
-						<button type="button" class="btn btn-primary mx-1">json</button>
-					</td>
-				  </tr>
-				</tbody>
-			  </table> -->
+</ul>
 
 {% endblock %}

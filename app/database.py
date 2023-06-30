@@ -1,10 +1,6 @@
 import mysql.connector
-# from app.db_config import *
+from app.db_config import *
 
-MYSQL_HOST='localhost'
-MYSQL_USER='root'
-MYSQL_PASSWORD=''
-MYSQL_DATABASE='ceneowebscraper'
 
 class Database:
     def __init__(self):
@@ -42,6 +38,7 @@ class Database:
         else:
             return None
 
+
     def check_if_product_already_exists(self, product_code):
         query = f"SELECT count(product_id) FROM `products` WHERE product_code={product_code}"
         self.cursor.execute(query)
@@ -74,7 +71,6 @@ class Database:
                 self.cursor.execute(query, values)
                 self.connection.commit()
 
-
             for con in opinion["cons"]:
                 query = "INSERT INTO cons (cons_id, text, opinion_id) VALUES (%s, %s, %s)"
                 values = ('NULL', con, opinion["opinion_id"])
@@ -88,16 +84,7 @@ class Database:
         self.connection.commit()
 
 
-        # print(stats['opinions_count'])
-
-
-
     def get_all_products(self):
         query = "SELECT product_id, opinions_count, cons_count, pros_count, avg_score FROM `stats`"
         self.cursor.execute(query)
         return self.cursor.fetchall()
-        
-db = Database()
-db.connect()
-# db.add_product("123")
-print(db.check_if_product_already_exists(12062914))
